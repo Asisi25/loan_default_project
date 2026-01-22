@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+env/
+venv/
+
+# Ignore dataset
+Loan_default_prediction.csv
+
+# Ignore model files
+web_app/models/*.pkl
