@@ -22,16 +22,18 @@ MODELS_DIR = os.path.join(BASE_DIR, "models")
 # 3️⃣ Load model metrics
 # -------------------------------
 metrics_path = os.path.join(BASE_DIR, "model_metrics.csv")
-metrics_df = pd.read_csv(metrics_path)
-st.subheader("Model Performance Summary")
-st.dataframe(metrics_df)
+try:
+    metrics_df = pd.read_csv(metrics_path)
+    st.subheader("Model Performance Summary")
+    st.dataframe(metrics_df)
+except Exception as e:
+    st.warning(f"Failed to load model metrics: {e}")
 
 # -------------------------------
 # 4️⃣ Load models safely (memory-friendly)
 # -------------------------------
 st.subheader("Load Models")
 
-# List of models to attempt loading
 MODEL_NAMES = ["Logistic Regression", "Linear SVM", "Neural Network (MLP)", "Random Forest"]
 loaded_models = {}
 
@@ -46,7 +48,7 @@ for name in MODEL_NAMES:
         st.error(f"{name} ❌ Failed to load. Error: {e}")
 
 if not loaded_models:
-    st.error("No models could be loaded due to memory limits. Use a smaller machine or reduce model sizes.")
+    st.error("No models could be loaded due to memory limits or errors.")
     st.stop()
 
 # -------------------------------
@@ -75,7 +77,7 @@ except Exception as e:
     st.error(f"Failed to load dataset from Google Drive. Error: {e}")
     st.stop()
 
-# Determine input columns
+# Determine input columns (exclude target and IDs)
 X_columns = df.drop(["LoanID", "Default"], axis=1).columns
 
 # -------------------------------

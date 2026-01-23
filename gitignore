@@ -1,13 +1,37 @@
-# Python cache
+# -------------------------------
+# Python cache & compiled files
+# -------------------------------
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
+# -------------------------------
 # Virtual environments
+# -------------------------------
 env/
 venv/
+.venv/
 
+# -------------------------------
+# Jupyter checkpoints
+# -------------------------------
+.ipynb_checkpoints/
+
+# -------------------------------
 # Ignore dataset
+# -------------------------------
 Loan_default_prediction.csv
 
+# -------------------------------
 # Ignore model files
+# -------------------------------
 web_app/models/*.pkl
+
+# -------------------------------
+# IDE / Editor settings
+# -------------------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
