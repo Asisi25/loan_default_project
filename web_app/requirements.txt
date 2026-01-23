@@ -5,4 +5,4 @@ scikit-learn==1.4.2
 joblib>=1.3.2
 matplotlib>=3.8.1
 seaborn>=0.13.2
-imbalanced-learn==1.12.1
+imbalanced-learn
